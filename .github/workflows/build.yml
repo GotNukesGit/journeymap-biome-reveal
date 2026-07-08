@@ -1,0 +1,31 @@
+name: Build BiomeReveal
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the project
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21 (runs Gradle; JDK 8 + 17 are fetched automatically)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Make the Gradle wrapper executable
+        run: chmod +x ./gradlew
+
+      - name: Build the mod
+        run: ./gradlew build --no-daemon --stacktrace
+
+      - name: Upload the finished jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: BiomeReveal-jar
+          path: build/libs/BiomeReveal-*.jar
+          if-no-files-found: error
