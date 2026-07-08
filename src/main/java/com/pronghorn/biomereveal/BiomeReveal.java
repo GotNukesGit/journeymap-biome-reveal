@@ -184,16 +184,15 @@ public class BiomeReveal {
         return (id < all.length) ? all[id] : null;
     }
 
-    // ---- helpers -------------------------------------------------------
+// ---- helpers -------------------------------------------------------
 
     private static String worldId() {
         Minecraft mc = Minecraft.getMinecraft();
         if (mc.isSingleplayer() && mc.getIntegratedServer() != null) {
             return "sp_" + mc.getIntegratedServer().getFolderName();
         }
-        if (mc.getCurrentServerData() != null) {
-            return "mp_" + mc.getCurrentServerData().serverIP;
-        }
-        return "world";
+        // Multiplayer: fall back to a shared id. Biome data still records live;
+        // only the singleplayer save-file backfill is unavailable on servers.
+        return "mp_world";
     }
 }
