@@ -1,0 +1,13 @@
+{
+  "modListVersion": 2,
+  "modList": [{
+    "modid": "biomereveal",
+    "name": "Biome Reveal",
+    "description": "Shows biome name and BiomeDictionary tags on the JourneyMap fullscreen map for any chunk you have discovered. Reads tags live from Forge at runtime.",
+    "version": "${modVersion}",
+    "mcversion": "1.7.10",
+    "authorList": ["Shane Allen"],
+    "dependencies": ["journeymap"],
+    "requiredMods": ["journeymap"]
+  }]
+}

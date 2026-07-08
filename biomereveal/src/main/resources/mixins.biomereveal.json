@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8.5-GTNH",
+  "package": "com.pronghorn.biomereveal.mixin",
+  "refmap": "mixins.biomereveal.refmap.json",
+  "target": "@env(DEFAULT)",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "MixinBlockInfoLayer",
+    "BlockInfoStepInvoker"
+  ]
+}
