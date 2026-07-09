@@ -58,6 +58,12 @@ public final class BiomeIndex {
         this.handled.clear();
     }
 
+    /** True once a world has been opened (baseDir set), i.e. safe to recordRaw. */
+    public synchronized boolean isReady() { return baseDir != null; }
+
+    /** The per-save directory (used by the backfill to place its marker). */
+    public synchronized File dir() { return baseDir; }
+
     // ---- recording -----------------------------------------------------
 
     /** True if this chunk has already been stored this session. */

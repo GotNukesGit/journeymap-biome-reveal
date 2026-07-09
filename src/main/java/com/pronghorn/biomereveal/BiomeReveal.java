@@ -52,6 +52,12 @@ public class BiomeReveal {
     public void init(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(this);                 // WorldEvent.Load/Unload
         FMLCommonHandler.instance().bus().register(this);        // TickEvent.ClientTickEvent
+
+        // One-time singleplayer disk backfill (client only; on a remote MP
+        // client MinecraftServer.getServer() is null, so it never runs).
+        if (FMLCommonHandler.instance().getSide().isClient()) {
+            BiomeBackfill.INSTANCE.register();
+        }
     }
 
     // ---- world lifecycle ----------------------------------------------
